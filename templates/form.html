@@ -39,8 +39,35 @@
         outputDiv.appendChild(table);
       }
     </script>
+
+    <style>
+      .nav-links {
+        text-align: center;
+        margin-bottom: 20px;
+        padding: 10px;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+      }
+
+      .nav-links a {
+        color: #007bff;
+        text-decoration: none;
+        margin: 0 15px;
+        padding: 5px 10px;
+        border-radius: 3px;
+      }
+
+      .nav-links a:hover {
+        background-color: #e9ecef;
+      }
+    </style>
   </head>
   <body>
+    <div class="nav-links">
+      <a href="{{ url_for('form') }}">User Form</a>
+      <a href="{{ url_for('todo') }}">To-Do List</a>
+    </div>
+
     <h1>Submit Your Info</h1>
     {% if error %}
     <p style="color: red">{{ error }}</p>
