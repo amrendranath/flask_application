@@ -26,6 +26,7 @@ def success():
 def get_all_submissions():
     try:
         submissions = list(collection.find({}, {'_id': 0}))
+        # Not sure what to change here 
         return jsonify(submissions)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
