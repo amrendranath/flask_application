@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Submit Form</title>
+
+    <script>
+      async function showData() {
+        const response = await fetch("/api");
+        const data = await response.json();
+
+        const outputDiv = document.getElementById("submitted-data");
+        outputDiv.innerHTML = ""; // Clear existing content
+
+        if (data.length === 0) {
+          outputDiv.innerHTML = "<p>No data submitted yet.</p>";
+          return;
+        }
+
+        const table = document.createElement("table");
+        table.border = 1;
+
+        const headerRow = table.insertRow();
+        const headers = ["Name", "Email"];
+        headers.forEach((header) => {
+          const th = document.createElement("th");
+          th.innerText = header;
+          headerRow.appendChild(th);
+        });
+
+        data.forEach((entry) => {
+          const row = table.insertRow();
+          const nameCell = row.insertCell(0);
+          const emailCell = row.insertCell(1);
+
+          nameCell.innerText = entry.name;
+          emailCell.innerText = entry.email;
+        });
+
+        outputDiv.appendChild(table);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Submit Your Info</h1>
+    {% if error %}
+    <p style="color: red">{{ error }}</p>
+    {% endif %}
+    <form method="POST" action="{{ url_for('submit') }}">
+      <label>Name:</label><br />
+      <input type="text" name="name" required /><br /><br />
+
+      <label>Email:</label><br />
+      <input type="email" name="email" required /><br /><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+
+    <br />
+    <button onclick="showData()">Show Submitted Data</button>
+
+    <div id="submitted-data" style="margin-top: 20px"></div>
+  </body>
+</html>
