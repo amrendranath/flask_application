@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>To-Do Item Added Successfully</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+
+      .container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .success-icon {
+        font-size: 60px;
+        color: #28a745;
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        color: #28a745;
+        margin-bottom: 20px;
+      }
+
+      .btn {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        text-decoration: none;
+        display: inline-block;
+        margin: 10px;
+      }
+
+      .btn:hover {
+        background-color: #0056b3;
+      }
+
+      .btn-secondary {
+        background-color: #6c757d;
+      }
+
+      .btn-secondary:hover {
+        background-color: #545b62;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="success-icon">✅</div>
+      <h1>Success!</h1>
+      <p>Your to-do item has been added successfully!</p>
+
+      <a href="{{ url_for('todo') }}" class="btn">Back to To-Do List</a>
+      <a href="{{ url_for('form') }}" class="btn btn-secondary"
+        >Go to User Form</a
+      >
+    </div>
+  </body>
+</html>
